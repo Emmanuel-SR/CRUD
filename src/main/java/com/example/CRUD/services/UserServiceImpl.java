@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
             //Optional<T> is a wrapper in this case an user wrapper
             Optional<User> optional = repository.findById(id);
             optional.ifPresent((e) -> {
-                mapper.toModel(e);
+                response.setBody(mapper.toModel(e));
             });
         } catch (Exception exception) {
             this.setError(response, exception);
