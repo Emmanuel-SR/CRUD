@@ -24,6 +24,14 @@ public class Head {
         this.message = message;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
     @Override
     public String toString() {
         return String.format("Head(code='%s', message='%s')", code, message);

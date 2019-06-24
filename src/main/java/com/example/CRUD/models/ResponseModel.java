@@ -14,4 +14,12 @@ public class ResponseModel<T> {
     public void setHead(Head head) {
         this.head = head;
     }
+
+    public Head getHead() {
+        return head;
+    }
+
+    public T getBody() {
+        return body;
+    }
 }

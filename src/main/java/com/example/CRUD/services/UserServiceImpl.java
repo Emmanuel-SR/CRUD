@@ -17,12 +17,13 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository repository;
+
     @Autowired
     private UserMapper mapper;
 
     @Override
     public ResponseModel<UserModel> get(Integer id) {
-        ResponseModel response = new ResponseModel();
+        ResponseModel<UserModel> response = new ResponseModel<>();
         try {
             //findById is a method in CrudRepository interface (AUTO IMPLEMENTED by Spring)
             //Optional<T> is a wrapper in this case an user wrapper
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseModel<UserModel> deleteById(Integer id) {
-        ResponseModel response = new ResponseModel();
+        ResponseModel<UserModel>  response = new ResponseModel<>();
         try {
             //deleteById is a method in CrudRepository interface (AUTO IMPLEMENTED by Spring)
             repository.deleteById(id);
@@ -60,7 +61,7 @@ public class UserServiceImpl implements UserService {
 
     //Insert and Update have the same implementation
     private ResponseModel<UserModel> save(UserModel model) {
-        ResponseModel response = new ResponseModel();
+        ResponseModel<UserModel> response = new ResponseModel<>();
         try {
             User entity = mapper.toEntity(model);
             //save is a method in CrudRepository interface (AUTO IMPLEMENTED by Spring)
@@ -76,4 +77,5 @@ public class UserServiceImpl implements UserService {
     private void setError(ResponseModel response, Exception exception) {
         response.setHead(new Head("-1", exception.getMessage()));
     }
+
 }
